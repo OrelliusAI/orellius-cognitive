@@ -16,17 +16,21 @@ Or pick individual layers:
 
 ```toml
 laminae-psyche = "0.1"    # Multi-agent cognitive pipeline
+laminae-persona = "0.1"   # Voice extraction & enforcement
+laminae-cortex = "0.1"    # Self-improving learning loop
 laminae-shadow = "0.1"    # Adversarial red-teaming
 laminae-glassbox = "0.1"  # I/O containment
 laminae-ironclad = "0.1"  # Process sandbox
 laminae-ollama = "0.1"    # Ollama client
 ```
 
-## The Four Layers
+## The Layers
 
 | Layer | Module | What It Does |
 |-------|--------|-------------|
 | **Psyche** | `laminae::psyche` | Id + Superego shape the Ego's response with invisible context |
+| **Persona** | `laminae::persona` | Voice extraction from samples, style enforcement, AI phrase detection |
+| **Cortex** | `laminae::cortex` | Tracks user edits, detects patterns, learns reusable instructions |
 | **Shadow** | `laminae::shadow` | Automated security auditing of AI output |
 | **Ironclad** | `laminae::ironclad` | Command whitelist, network sandbox, resource watchdog |
 | **Glassbox** | `laminae::glassbox` | Input/output validation, rate limiting, path protection |
