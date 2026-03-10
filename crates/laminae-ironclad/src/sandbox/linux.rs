@@ -4,8 +4,6 @@
 //! user namespaces. Falls back gracefully when individual features are
 //! unavailable.
 
-use std::os::unix::process::CommandExt;
-
 use anyhow::Result;
 use tokio::process::Command;
 
