@@ -761,7 +761,9 @@ mod tests {
         assert_eq!(provider.name(), "seatbelt");
         #[cfg(target_os = "linux")]
         assert_eq!(provider.name(), "linux-ns");
-        #[cfg(not(any(target_os = "macos", target_os = "linux")))]
+        #[cfg(target_os = "windows")]
+        assert_eq!(provider.name(), "windows-job");
+        #[cfg(not(any(target_os = "macos", target_os = "linux", target_os = "windows")))]
         assert_eq!(provider.name(), "noop");
     }
 
