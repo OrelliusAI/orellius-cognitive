@@ -289,7 +289,7 @@ patterns = c.detect_patterns()
 
 ## Benchmarks
 
-All numbers from Criterion.rs on Apple M3 Pro. Full results in [`BENCHMARKS.md`](BENCHMARKS.md).
+All numbers from Criterion.rs on Apple M4 Max. Full results in [`BENCHMARKS.md`](BENCHMARKS.md).
 
 | Operation | Time | Crate |
 |-----------|------|-------|

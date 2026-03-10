@@ -1,6 +1,6 @@
 # Benchmarks
 
-All benchmarks run on Apple M3 Pro using [Criterion.rs](https://github.com/bheisler/criterion.rs).
+All benchmarks run on Apple M4 Max using [Criterion.rs](https://github.com/bheisler/criterion.rs).
 Run locally with `cargo bench --workspace`.
 
 ## Glassbox — I/O Containment
