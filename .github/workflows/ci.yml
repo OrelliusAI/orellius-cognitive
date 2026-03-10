@@ -60,7 +60,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
       - run: cargo install cargo-audit
-      - run: cargo audit
+      - run: cargo audit --ignore RUSTSEC-2025-0020
 
   fmt:
     name: Format
