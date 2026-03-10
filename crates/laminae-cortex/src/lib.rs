@@ -43,11 +43,13 @@
 //! ```
 
 mod detector;
+#[cfg(not(target_arch = "wasm32"))]
 mod learner;
 mod store;
 mod tracker;
 
 pub use detector::{detect_patterns, EditPattern, PatternType};
+#[cfg(not(target_arch = "wasm32"))]
 pub use learner::EditLearner;
 pub use store::{InstructionStore, LearnedInstruction};
 pub use tracker::EditRecord;
@@ -136,6 +138,8 @@ impl Cortex {
     /// Use an LLM to analyze a specific edit and generate an instruction.
     ///
     /// The instruction is automatically added to the store (deduplicated).
+    /// Not available on WASM (requires Ollama).
+    #[cfg(not(target_arch = "wasm32"))]
     pub async fn learn_from_edit(
         &mut self,
         original: &str,

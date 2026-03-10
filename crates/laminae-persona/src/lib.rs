@@ -39,12 +39,14 @@
 //! ```
 
 mod dna;
+#[cfg(not(target_arch = "wasm32"))]
 mod extractor;
 mod filter;
 mod model;
 mod prompt;
 
 pub use dna::VoiceDna;
+#[cfg(not(target_arch = "wasm32"))]
 pub use extractor::PersonaExtractor;
 pub use filter::{VoiceCheckResult, VoiceFilter, VoiceFilterConfig};
 pub use model::*;

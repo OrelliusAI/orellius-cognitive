@@ -27,9 +27,7 @@
 //! Use individual crates for fine-grained control, or this meta-crate
 //! for the full stack.
 
-/// Multi-agent cognitive pipeline — personality and safety through
-/// Id (creative), Superego (safety), and Ego (your LLM).
-pub use laminae_psyche as psyche;
+// ── Layers available on ALL platforms (including WASM) ──
 
 /// Voice persona extraction and style enforcement — learns how a person
 /// writes and keeps LLM output on-voice.
@@ -39,25 +37,35 @@ pub use laminae_persona as persona;
 /// converts corrections into reusable instructions.
 pub use laminae_cortex as cortex;
 
-/// Adversarial red-teaming engine — automated security auditing
-/// of AI output via static analysis, LLM review, and sandbox execution.
-pub use laminae_shadow as shadow;
-
-/// Process-level execution sandbox — command whitelist, network filter,
-/// resource watchdog with SIGKILL.
-pub use laminae_ironclad as ironclad;
-
 /// Input/output containment — rate limiting, command blocklists,
 /// immutable zones, injection prevention.
 pub use laminae_glassbox as glassbox;
 
+// ── Layers that require native OS features (not available in WASM) ──
+
+/// Multi-agent cognitive pipeline — personality and safety through
+/// Id (creative), Superego (safety), and Ego (your LLM).
+#[cfg(not(target_arch = "wasm32"))]
+pub use laminae_psyche as psyche;
+
+/// Adversarial red-teaming engine — automated security auditing
+/// of AI output via static analysis, LLM review, and sandbox execution.
+#[cfg(not(target_arch = "wasm32"))]
+pub use laminae_shadow as shadow;
+
+/// Process-level execution sandbox — command whitelist, network filter,
+/// resource watchdog with SIGKILL.
+#[cfg(not(target_arch = "wasm32"))]
+pub use laminae_ironclad as ironclad;
+
 /// Ollama client for local LLM inference.
+#[cfg(not(target_arch = "wasm32"))]
 pub use laminae_ollama as ollama;
 
 /// Anthropic Claude backend — first-class EgoBackend for Claude models.
-#[cfg(feature = "anthropic")]
+#[cfg(all(not(target_arch = "wasm32"), feature = "anthropic"))]
 pub use laminae_anthropic as anthropic;
 
 /// OpenAI-compatible backend — EgoBackend for OpenAI, Groq, Together, DeepSeek, and local servers.
-#[cfg(feature = "openai")]
+#[cfg(all(not(target_arch = "wasm32"), feature = "openai"))]
 pub use laminae_openai as openai;
