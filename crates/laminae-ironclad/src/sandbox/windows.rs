@@ -100,7 +100,7 @@ pub fn assign_job_object_to_pid(pid: u32) -> Result<()> {
 
     unsafe {
         let job: HANDLE = CreateJobObjectW(ptr::null(), ptr::null());
-        if job == 0 || job == INVALID_HANDLE_VALUE {
+        if job.is_null() || job == INVALID_HANDLE_VALUE {
             anyhow::bail!("Failed to create Job Object");
         }
 
@@ -122,7 +122,7 @@ pub fn assign_job_object_to_pid(pid: u32) -> Result<()> {
         }
 
         let process: HANDLE = OpenProcess(PROCESS_ALL_ACCESS, 0, pid);
-        if process == 0 || process == INVALID_HANDLE_VALUE {
+        if process.is_null() || process == INVALID_HANDLE_VALUE {
             CloseHandle(job);
             anyhow::bail!("Failed to open process {pid} for Job Object assignment");
         }
