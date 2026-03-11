@@ -84,16 +84,14 @@ while let Some(event) = rx.recv().await {
 ## Configuration
 
 ```rust
-let config = PsycheConfig {
-    id_model: "qwen2.5:7b".into(),
-    superego_model: "qwen2.5:7b".into(),
-    id_temperature: 0.9,       // Higher = more creative
-    superego_temperature: 0.3, // Lower = more strict
-    id_weight: 0.6,            // 0.0–1.0
-    superego_weight: 0.4,      // 0.0–1.0
-    ego_system_prompt: "You are a helpful assistant.".into(),
-    ..Default::default()
-};
+let mut config = PsycheConfig::default();
+config.id_model = "qwen2.5:7b".into();
+config.superego_model = "qwen2.5:7b".into();
+config.id_temperature = 0.9;       // Higher = more creative
+config.superego_temperature = 0.3; // Lower = more strict
+config.id_weight = 0.6;            // 0.0-1.0
+config.superego_weight = 0.4;      // 0.0-1.0
+config.ego_system_prompt = "You are a helpful assistant.".into();
 ```
 
 ## License

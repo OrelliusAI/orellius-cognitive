@@ -60,12 +60,11 @@ let claude = ClaudeBackend::new("sk-ant-...")
     .with_max_tokens(8192);
 
 // Or with full config control:
-let claude = ClaudeBackend::with_config(ClaudeConfig {
-    api_key: "sk-ant-...".to_string(),
-    model: "claude-sonnet-4-20250514".to_string(),
-    max_tokens: 4096,
-    ..Default::default()
-})?;
+let mut config = ClaudeConfig::default();
+config.api_key = "sk-ant-...".to_string();
+config.model = "claude-sonnet-4-20250514".to_string();
+config.max_tokens = 4096;
+let claude = ClaudeBackend::with_config(config)?;
 ```
 
 ## Environment

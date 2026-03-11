@@ -6,7 +6,7 @@ The `laminae-anthropic` crate provides a first-party `EgoBackend` for Claude.
 
 ```toml
 [dependencies]
-laminae = { version = "0.2", features = ["anthropic"] }
+laminae = { version = "0.4", features = ["anthropic"] }
 tokio = { version = "1", features = ["full"] }
 ```
 
@@ -19,7 +19,7 @@ use laminae::ollama::OllamaClient;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let ego = ClaudeBackend::new()?; // reads ANTHROPIC_API_KEY from env
+    let ego = ClaudeBackend::from_env()?; // reads ANTHROPIC_API_KEY from env
     let engine = PsycheEngine::new(OllamaClient::new(), ego);
 
     let response = engine.reply("Explain quantum entanglement simply.").await?;

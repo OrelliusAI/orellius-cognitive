@@ -98,15 +98,17 @@ pub enum ClaudeError {
 /// ```
 /// use laminae_anthropic::ClaudeConfig;
 ///
-/// let config = ClaudeConfig {
-///     model: "claude-sonnet-4-20250514".to_string(),
-///     max_tokens: 4096,
-///     temperature: Some(0.7),
-///     ..ClaudeConfig::default()
+/// let config = {
+///     let mut c = ClaudeConfig::default();
+///     c.model = "claude-sonnet-4-20250514".to_string();
+///     c.max_tokens = 4096;
+///     c.temperature = Some(0.7);
+///     c
 /// };
 /// assert_eq!(config.model, "claude-sonnet-4-20250514");
 /// ```
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct ClaudeConfig {
     /// Anthropic API key.
     #[serde(skip_serializing, default)]
@@ -262,11 +264,12 @@ impl ClaudeBackend {
     /// ```
     /// use laminae_anthropic::{ClaudeBackend, ClaudeConfig};
     ///
-    /// let config = ClaudeConfig {
-    ///     api_key: "sk-ant-test".to_string(),
-    ///     model: "claude-opus-4-20250514".to_string(),
-    ///     max_tokens: 8192,
-    ///     ..Default::default()
+    /// let config = {
+    ///     let mut c = ClaudeConfig::default();
+    ///     c.api_key = "sk-ant-test".to_string();
+    ///     c.model = "claude-opus-4-20250514".to_string();
+    ///     c.max_tokens = 8192;
+    ///     c
     /// };
     /// let claude = ClaudeBackend::with_config(config)?;
     /// # Ok::<(), laminae_anthropic::ClaudeError>(())

@@ -297,9 +297,12 @@ impl ShadowEngine {
                 a.category
                     .to_string()
                     .cmp(&b.category.to_string())
+                    .then(a.title.cmp(&b.title))
                     .then(a.evidence.cmp(&b.evidence))
             });
-            all_findings.dedup_by(|a, b| a.category == b.category && a.evidence == b.evidence);
+            all_findings.dedup_by(|a, b| {
+                a.category == b.category && a.title == b.title && a.evidence == b.evidence
+            });
 
             let max_severity = all_findings
                 .iter()

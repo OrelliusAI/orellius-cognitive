@@ -72,9 +72,10 @@ async fn main() -> anyhow::Result<()> {
     }
 
     // Configure the engine
-    let config = PsycheConfig {
-        ego_system_prompt: "You are a helpful AI assistant.".to_string(),
-        ..Default::default()
+    let config = {
+        let mut c = PsycheConfig::default();
+        c.ego_system_prompt = "You are a helpful AI assistant.".to_string();
+        c
     };
 
     let engine = PsycheEngine::with_config(ollama, EchoEgo, config);

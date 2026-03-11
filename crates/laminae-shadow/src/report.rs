@@ -80,6 +80,7 @@ pub enum AnalysisSource {
 
 /// A single vulnerability finding from any analysis stage.
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct VulnFinding {
     pub id: String,
     pub category: VulnCategory,
@@ -95,6 +96,7 @@ pub struct VulnFinding {
 
 /// Complete report from a Shadow analysis run.
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct VulnReport {
     pub session_id: String,
     pub ego_response_excerpt: String,

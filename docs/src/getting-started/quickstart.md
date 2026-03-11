@@ -11,7 +11,7 @@ cargo new my-ai-app && cd my-ai-app
 ```toml
 # Cargo.toml
 [dependencies]
-laminae = "0.3"
+laminae = "0.4"
 tokio = { version = "1", features = ["full"] }
 anyhow = "1"
 ```

@@ -6,7 +6,7 @@ The `laminae-openai` crate provides an `EgoBackend` for any OpenAI-compatible AP
 
 ```toml
 [dependencies]
-laminae = { version = "0.2", features = ["openai"] }
+laminae = { version = "0.4", features = ["openai"] }
 tokio = { version = "1", features = ["full"] }
 ```
 
@@ -19,7 +19,7 @@ use laminae::ollama::OllamaClient;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let ego = OpenAIBackend::new()?; // reads OPENAI_API_KEY from env
+    let ego = OpenAIBackend::from_env()?; // reads OPENAI_API_KEY from env
     let engine = PsycheEngine::new(OllamaClient::new(), ego);
 
     let response = engine.reply("Write a haiku about Rust.").await?;

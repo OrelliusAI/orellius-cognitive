@@ -536,12 +536,13 @@ async fn multi_vector_attack_all_layers_hold() {
 
     // Attack vector 6: Shadow catches malicious code
     let store = create_report_store();
-    let config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1,
-        llm_review_enabled: false,
-        sandbox_enabled: false,
-        ..Default::default()
+    let config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1;
+        c.llm_review_enabled = false;
+        c.sandbox_enabled = false;
+        c
     };
     let shadow = ShadowEngine::with_config(store, config, laminae::ollama::OllamaClient::new());
 

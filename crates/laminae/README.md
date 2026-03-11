@@ -8,20 +8,20 @@ Meta-crate that re-exports all Laminae layers. Add this one dependency to get th
 
 ```toml
 [dependencies]
-laminae = "0.1"
+laminae = "0.4"
 tokio = { version = "1", features = ["full"] }
 ```
 
 Or pick individual layers:
 
 ```toml
-laminae-psyche = "0.1"    # Multi-agent cognitive pipeline
-laminae-persona = "0.1"   # Voice extraction & enforcement
-laminae-cortex = "0.1"    # Self-improving learning loop
-laminae-shadow = "0.1"    # Adversarial red-teaming
-laminae-glassbox = "0.1"  # I/O containment
-laminae-ironclad = "0.1"  # Process sandbox
-laminae-ollama = "0.1"    # Ollama client
+laminae-psyche = "0.4"    # Multi-agent cognitive pipeline
+laminae-persona = "0.4"   # Voice extraction & enforcement
+laminae-cortex = "0.4"    # Self-improving learning loop
+laminae-shadow = "0.4"    # Adversarial red-teaming
+laminae-glassbox = "0.4"  # I/O containment
+laminae-ironclad = "0.4"  # Process sandbox
+laminae-ollama = "0.4"    # Ollama client
 ```
 
 ## The Layers

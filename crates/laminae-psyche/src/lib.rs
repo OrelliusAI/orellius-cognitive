@@ -156,6 +156,7 @@ pub enum Phase {
 
 /// Tuning parameters for the Psyche engine.
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct PsycheConfig {
     /// Model name for the Id agent (creative force).
     #[serde(default = "default_id_model")]

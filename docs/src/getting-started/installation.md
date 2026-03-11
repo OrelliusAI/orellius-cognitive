@@ -6,7 +6,7 @@ Add Laminae to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-laminae = "0.3"
+laminae = "0.4"
 tokio = { version = "1", features = ["full"] }
 ```
 
@@ -14,13 +14,13 @@ tokio = { version = "1", features = ["full"] }
 
 ```toml
 # Claude (Anthropic)
-laminae = { version = "0.3", features = ["anthropic"] }
+laminae = { version = "0.4", features = ["anthropic"] }
 
 # OpenAI / Groq / Together / DeepSeek / local
-laminae = { version = "0.3", features = ["openai"] }
+laminae = { version = "0.4", features = ["openai"] }
 
 # All backends
-laminae = { version = "0.3", features = ["all-backends"] }
+laminae = { version = "0.4", features = ["all-backends"] }
 ```
 
 ## Individual Layers
@@ -29,20 +29,20 @@ Pick only what you need:
 
 ```toml
 [dependencies]
-laminae-psyche = "0.3"       # Cognitive pipeline
-laminae-persona = "0.3"      # Voice extraction & enforcement
-laminae-cortex = "0.3"       # Learning loop
-laminae-shadow = "0.3"       # Red-teaming
-laminae-glassbox = "0.3"     # I/O containment
-laminae-ironclad = "0.3"     # Process sandbox
-laminae-ollama = "0.3"       # Ollama client
-laminae-anthropic = "0.3"    # Claude EgoBackend
-laminae-openai = "0.3"       # OpenAI-compatible EgoBackend
+laminae-psyche = "0.4"       # Cognitive pipeline
+laminae-persona = "0.4"      # Voice extraction & enforcement
+laminae-cortex = "0.4"       # Learning loop
+laminae-shadow = "0.4"       # Red-teaming
+laminae-glassbox = "0.4"     # I/O containment
+laminae-ironclad = "0.4"     # Process sandbox
+laminae-ollama = "0.4"       # Ollama client
+laminae-anthropic = "0.4"    # Claude EgoBackend
+laminae-openai = "0.4"       # OpenAI-compatible EgoBackend
 ```
 
 ## Requirements
 
-- **Rust 1.70+**
+- **Rust 1.75+**
 - **Ollama** (for Psyche, Persona, Cortex, and Shadow LLM features)
   ```bash
   # macOS

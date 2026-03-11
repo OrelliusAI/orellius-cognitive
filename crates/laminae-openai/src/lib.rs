@@ -120,15 +120,17 @@ pub enum OpenAIError {
 /// ```
 /// use laminae_openai::OpenAIConfig;
 ///
-/// let config = OpenAIConfig {
-///     model: "gpt-4o".to_string(),
-///     max_tokens: Some(4096),
-///     temperature: Some(0.7),
-///     ..OpenAIConfig::default()
+/// let config = {
+///     let mut c = OpenAIConfig::default();
+///     c.model = "gpt-4o".to_string();
+///     c.max_tokens = Some(4096);
+///     c.temperature = Some(0.7);
+///     c
 /// };
 /// assert_eq!(config.base_url, "https://api.openai.com/v1");
 /// ```
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct OpenAIConfig {
     /// API key for authentication.
     #[serde(skip_serializing, default)]
@@ -285,11 +287,12 @@ impl OpenAIBackend {
     /// ```
     /// use laminae_openai::{OpenAIBackend, OpenAIConfig};
     ///
-    /// let config = OpenAIConfig {
-    ///     api_key: "sk-test".to_string(),
-    ///     model: "gpt-4o-mini".to_string(),
-    ///     max_tokens: Some(2048),
-    ///     ..Default::default()
+    /// let config = {
+    ///     let mut c = OpenAIConfig::default();
+    ///     c.api_key = "sk-test".to_string();
+    ///     c.model = "gpt-4o-mini".to_string();
+    ///     c.max_tokens = Some(2048);
+    ///     c
     /// };
     /// let openai = OpenAIBackend::with_config(config)?;
     /// # Ok::<(), laminae_openai::OpenAIError>(())

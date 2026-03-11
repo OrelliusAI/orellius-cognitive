@@ -338,12 +338,13 @@ fn code_block_extraction_inline_backticks_ignored() {
 #[tokio::test]
 async fn shadow_engine_clean_output_produces_clean_report() {
     let store = create_report_store();
-    let config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1,
-        llm_review_enabled: false,
-        sandbox_enabled: false,
-        ..Default::default()
+    let config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1;
+        c.llm_review_enabled = false;
+        c.sandbox_enabled = false;
+        c
     };
     let engine =
         ShadowEngine::with_config(store.clone(), config, laminae::ollama::OllamaClient::new());
@@ -366,12 +367,13 @@ async fn shadow_engine_clean_output_produces_clean_report() {
 #[tokio::test]
 async fn shadow_engine_detects_eval_in_output() {
     let store = create_report_store();
-    let config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1,
-        llm_review_enabled: false,
-        sandbox_enabled: false,
-        ..Default::default()
+    let config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1;
+        c.llm_review_enabled = false;
+        c.sandbox_enabled = false;
+        c
     };
     let engine =
         ShadowEngine::with_config(store.clone(), config, laminae::ollama::OllamaClient::new());
@@ -399,9 +401,10 @@ async fn shadow_engine_detects_eval_in_output() {
 #[tokio::test]
 async fn shadow_engine_disabled_produces_no_events() {
     let store = create_report_store();
-    let config = ShadowConfig {
-        enabled: false,
-        ..Default::default()
+    let config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = false;
+        c
     };
     let engine = ShadowEngine::with_config(store, config, laminae::ollama::OllamaClient::new());
 
@@ -415,12 +418,13 @@ async fn shadow_engine_disabled_produces_no_events() {
 #[tokio::test]
 async fn shadow_engine_report_stored() {
     let store = create_report_store();
-    let config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1,
-        llm_review_enabled: false,
-        sandbox_enabled: false,
-        ..Default::default()
+    let config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1;
+        c.llm_review_enabled = false;
+        c.sandbox_enabled = false;
+        c
     };
     let engine =
         ShadowEngine::with_config(store.clone(), config, laminae::ollama::OllamaClient::new());

@@ -47,12 +47,13 @@ async fn clean_message_flows_through_full_pipeline() {
 
     // Step 4: Shadow scans the output
     let store = create_report_store();
-    let shadow_config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1,
-        llm_review_enabled: false,
-        sandbox_enabled: false,
-        ..Default::default()
+    let shadow_config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1;
+        c.llm_review_enabled = false;
+        c.sandbox_enabled = false;
+        c
     };
     let shadow = ShadowEngine::with_config(
         store.clone(),
@@ -155,12 +156,13 @@ async fn dangerous_ego_output_caught_by_glassbox() {
 #[tokio::test]
 async fn dangerous_ego_output_caught_by_shadow() {
     let store = create_report_store();
-    let config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1,
-        llm_review_enabled: false,
-        sandbox_enabled: false,
-        ..Default::default()
+    let config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1;
+        c.llm_review_enabled = false;
+        c.sandbox_enabled = false;
+        c
     };
     let shadow = ShadowEngine::with_config(store, config, laminae::ollama::OllamaClient::new());
 
@@ -315,12 +317,13 @@ fn command_execution_double_validated() {
 #[tokio::test]
 async fn shadow_findings_inform_cortex() {
     let store = create_report_store();
-    let config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1,
-        llm_review_enabled: false,
-        sandbox_enabled: false,
-        ..Default::default()
+    let config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1;
+        c.llm_review_enabled = false;
+        c.sandbox_enabled = false;
+        c
     };
     let shadow =
         ShadowEngine::with_config(store.clone(), config, laminae::ollama::OllamaClient::new());
@@ -370,9 +373,10 @@ async fn psyche_skip_tier_direct_to_ego() {
 async fn psyche_with_config_applies_system_prompt() {
     let ego = DeterministicEgo::new("Configured response.");
     let ollama = laminae::ollama::OllamaClient::new();
-    let config = PsycheConfig {
-        ego_system_prompt: "You are a helpful coding assistant.".into(),
-        ..Default::default()
+    let config = {
+        let mut c = PsycheConfig::default();
+        c.ego_system_prompt = "You are a helpful coding assistant.".into();
+        c
     };
     let engine = PsycheEngine::with_config(ollama, ego, config);
 

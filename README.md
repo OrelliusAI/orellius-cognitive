@@ -233,7 +233,7 @@ gb.validate_output("The weather is sunny.")?;            // OK
 ```toml
 # Full stack
 [dependencies]
-laminae = "0.3"
+laminae = "0.4"
 tokio = { version = "1", features = ["full"] }
 
 # With first-class LLM backends

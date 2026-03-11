@@ -183,9 +183,10 @@ async fn main() -> anyhow::Result<()> {
     let ollama = OllamaClient::new();
     let ego = OpenAIEgo::new(api_key);
 
-    let config = PsycheConfig {
-        ego_system_prompt: "You are a helpful, concise AI assistant.".into(),
-        ..Default::default()
+    let config = {
+        let mut c = PsycheConfig::default();
+        c.ego_system_prompt = "You are a helpful, concise AI assistant.".into();
+        c
     };
 
     let engine = PsycheEngine::with_config(ollama, ego, config);

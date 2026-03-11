@@ -22,10 +22,11 @@ async fn main() -> anyhow::Result<()> {
     let store = create_report_store();
 
     // Static analysis only — no Ollama required
-    let config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1,
-        ..Default::default()
+    let config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1;
+        c
     };
 
     let engine = ShadowEngine::with_config(store.clone(), config, OllamaClient::new());

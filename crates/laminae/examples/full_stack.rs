@@ -82,18 +82,20 @@ async fn main() -> anyhow::Result<()> {
     );
 
     // Layer 2: Psyche (personality)
-    let psyche_config = PsycheConfig {
-        ego_system_prompt: "You are a helpful coding assistant.".into(),
-        ..Default::default()
+    let psyche_config = {
+        let mut c = PsycheConfig::default();
+        c.ego_system_prompt = "You are a helpful coding assistant.".into();
+        c
     };
     let psyche = PsycheEngine::with_config(ollama.clone(), DemoEgo, psyche_config);
 
     // Layer 3: Shadow (red-teaming)
     let report_store = create_report_store();
-    let shadow_config = ShadowConfig {
-        enabled: true,
-        aggressiveness: 1, // Static analysis only
-        ..Default::default()
+    let shadow_config = {
+        let mut c = ShadowConfig::default();
+        c.enabled = true;
+        c.aggressiveness = 1; // Static analysis only
+        c
     };
     let shadow = ShadowEngine::with_config(report_store.clone(), shadow_config, ollama);
 

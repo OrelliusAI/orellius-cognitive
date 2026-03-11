@@ -21,7 +21,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! laminae = "0.3"
+//! laminae = "0.4"
 //! ```
 //!
 //! Use individual crates for fine-grained control, or this meta-crate

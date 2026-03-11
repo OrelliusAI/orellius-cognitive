@@ -26,6 +26,7 @@ impl HealThreshold {
 ///
 /// Can be loaded from a JSON file or constructed programmatically.
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[non_exhaustive]
 pub struct ShadowConfig {
     /// Master enable/disable.
     #[serde(default = "default_enabled")]
@@ -144,7 +145,10 @@ impl ShadowConfig {
                 let mut config: Self = match serde_json::from_str(&content) {
                     Ok(c) => c,
                     Err(e) => {
-                        tracing::warn!("Failed to parse Shadow config at {}: {e}, using defaults", path.display());
+                        tracing::warn!(
+                            "Failed to parse Shadow config at {}: {e}, using defaults",
+                            path.display()
+                        );
                         Self::default()
                     }
                 };

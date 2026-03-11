@@ -69,13 +69,11 @@ let local = OpenAIBackend::local("http://localhost:11434/v1");
 ```rust
 use laminae_openai::{OpenAIBackend, OpenAIConfig};
 
-let config = OpenAIConfig {
-    api_key: "sk-...".to_string(),
-    model: "gpt-4o-mini".to_string(),
-    max_tokens: Some(4096),
-    temperature: Some(0.7),
-    ..Default::default()
-};
+let mut config = OpenAIConfig::default();
+config.api_key = "sk-...".to_string();
+config.model = "gpt-4o-mini".to_string();
+config.max_tokens = Some(4096);
+config.temperature = Some(0.7);
 let openai = OpenAIBackend::with_config(config)?;
 ```
 
