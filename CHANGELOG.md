@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-03-18
+
+### Fixed
+- README version references updated to consistently use "0.4" across all installation examples.
+- Ollama client now returns actionable error messages on connection failure instead of opaque reqwest errors.
+- CI workflows: added automated publish pipelines for Rust crates (`publish-crates.yml`) and Python wheel (`publish-python.yml`), triggered by `v*` tags.
+
 ## [0.4.1] - 2026-03-11
 
 ### Changed
@@ -107,7 +114,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Workspace restructured into independent crates.
 
-[Unreleased]: https://github.com/orellius/laminae/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/orellius/laminae/compare/v0.4.2...HEAD
+[0.4.2]: https://github.com/orellius/laminae/compare/v0.4.1...v0.4.2
 [0.4.1]: https://github.com/orellius/laminae/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/orellius/laminae/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/orellius/laminae/compare/v0.3.0...v0.3.1

@@ -341,6 +341,13 @@ See the [`crates/laminae/examples/`](crates/laminae/examples/) directory:
 | [`ego_claude.rs`](crates/laminae/examples/ego_claude.rs) | EgoBackend for Claude (Anthropic API) |
 | [`ego_openai.rs`](crates/laminae/examples/ego_openai.rs) | EgoBackend for GPT-4o (OpenAI API) with streaming |
 
+## Publishing
+
+Automated CI workflows publish on version tags:
+
+- **Rust crates** -- push a `v*` tag to publish all crates to crates.io in dependency order
+- **Python wheel** -- the same `v*` tag triggers a multi-platform build and PyPI upload via Maturin
+
 ```bash
 cargo run -p laminae --example quickstart
 cargo run -p laminae --example shadow_audit
