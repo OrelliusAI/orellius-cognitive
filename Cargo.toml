@@ -15,7 +15,7 @@ members = [
 ]
 
 [workspace.package]
-version = "0.4.1"
+version = "0.4.2"
 edition = "2021"
 rust-version = "1.83"
 license = "Apache-2.0"
@@ -51,12 +51,12 @@ futures-util = "0.3"
 dirs = "6"
 libc = "0.2"
 # Internal crates
-laminae-psyche = { version = "0.4.1", path = "crates/laminae-psyche" }
-laminae-shadow = { version = "0.4.1", path = "crates/laminae-shadow" }
-laminae-ironclad = { version = "0.4.1", path = "crates/laminae-ironclad" }
-laminae-glassbox = { version = "0.4.1", path = "crates/laminae-glassbox" }
-laminae-ollama = { version = "0.4.1", path = "crates/laminae-ollama" }
-laminae-persona = { version = "0.4.1", path = "crates/laminae-persona" }
-laminae-cortex = { version = "0.4.1", path = "crates/laminae-cortex" }
-laminae-anthropic = { version = "0.4.1", path = "crates/laminae-anthropic" }
-laminae-openai = { version = "0.4.1", path = "crates/laminae-openai" }
+laminae-psyche = { version = "0.4.2", path = "crates/laminae-psyche" }
+laminae-shadow = { version = "0.4.2", path = "crates/laminae-shadow" }
+laminae-ironclad = { version = "0.4.2", path = "crates/laminae-ironclad" }
+laminae-glassbox = { version = "0.4.2", path = "crates/laminae-glassbox" }
+laminae-ollama = { version = "0.4.2", path = "crates/laminae-ollama" }
+laminae-persona = { version = "0.4.2", path = "crates/laminae-persona" }
+laminae-cortex = { version = "0.4.2", path = "crates/laminae-cortex" }
+laminae-anthropic = { version = "0.4.2", path = "crates/laminae-anthropic" }
+laminae-openai = { version = "0.4.2", path = "crates/laminae-openai" }
